@@ -81,13 +81,13 @@ results = {}
 print("\n[TRAINING] Results:\n")
 print(f"  {'Model':<22} {'MAE':>8} {'RMSE':>8} {'R² Score':>10}")
 for name, model in models.items():
-model.fit(X_train, y_train)
-preds=odel.predict(X_test)
-mae=mean_absolute_error(y_test, preds)
-rmse=np.sqrt(mean_squared_error(y_test, preds))
-r2=r2_score(y_test, preds)
-results[name] = {"model": model, "preds": preds, "mae": mae, "rmse": rmse, "r2": r2}
-print(f"  {name:<22} {mae:>7.2f}L {rmse:>7.2f}L {r2:>10.3f}")
+    model.fit(X_train, y_train)
+    preds = model.predict(X_test)
+    mae  = mean_absolute_error(y_test, preds)
+    rmse = np.sqrt(mean_squared_error(y_test, preds))
+    r2   = r2_score(y_test, preds)
+    results[name] = {"model": model, "preds": preds, "mae": mae, "rmse": rmse, "r2": r2}
+    print(f"  {name:<22} {mae:>7.2f}L {rmse:>7.2f}L {r2:>10.3f}")
 best_name = max(results, key=lambda k: results[k]["r2"])
 best = results[best_name]
 fig, ax = plt.subplots(figsize=(6, 5))
